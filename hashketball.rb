@@ -1,3 +1,5 @@
+require 'pry'
+
 # Write your code below game_hash
 def game_hash
   {
@@ -126,4 +128,71 @@ def game_hash
   }
 end
 
-# Write code here
+
+def num_points_scored(name)
+  all_players = game_hash[:home][:players].concat(game_hash[:away][:players])
+  my_player = all_players.find do |player_stat|
+    player_stat[:player_name] == name
+  end 
+  my_player[:points]
+end    
+
+def shoe_size(name)
+  all_players = game_hash[:home][:players].concat(game_hash[:away][:players])
+  my_player = all_players.find do |player_stat|
+    player_stat[:player_name] == name
+  end 
+  my_player[:shoe]
+end    
+
+def team_colors(name) 
+  game_hash.each do |team, info|
+    if info[:team_name] == name 
+      return info[:colors]
+    end 
+  end
+end 
+
+def team_names
+  game_hash.collect {|team, info| info[:team_name]}
+end 
+
+
+def player_numbers(name)
+  all_numbers = []
+  game_hash.each do |team, info|
+    if info[:team_name] == name
+      info[:players].each do |player_stat|
+        all_numbers << player_stat[:number]
+      end 
+    end 
+  end 
+  all_numbers
+end 
+
+
+def player_stats(name)
+  all_players = game_hash[:home][:players].concat(game_hash[:away][:players])
+  all_players.find do |player_stat|
+    if player_stat[:player_name] == name
+      return player_stat
+    end 
+  end
+end
+
+
+def big_shoe_rebounds 
+  all_players = game_hash[:home][:players].concat(game_hash[:away][:players])
+  all_players.max_by {|player_stat| player_stat[:shoe]}[:rebounds]
+end
+
+
+def most_points_scored
+  all_players = game_hash[:home][:players].concat(game_hash[:away][:players])
+  all_players.max_by {|player_stat| player_stat[:points]}[:player_name]
+end
+
+
+
+
+
