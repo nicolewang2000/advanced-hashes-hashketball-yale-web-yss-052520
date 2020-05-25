@@ -147,7 +147,7 @@ end
 
 def team_colors(name) 
  binding.pry
- game_hash.find{|team, info| info[:team_name] == name}.value[:colors]
+ game_hash.find{|team, info| info[:team_name] == name}.values[:colors]
 end 
 
 def team_names
