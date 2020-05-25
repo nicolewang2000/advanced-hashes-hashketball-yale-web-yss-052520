@@ -146,7 +146,7 @@ def shoe_size(name)
 end    
 
 def team_colors(name) 
- game_hash.find {|team, info| info[:team_name] == name}.key([:colors])
+ game_hash.find {|team, info| info[:team_name] == name}.value([:colors])
 end 
 
 def team_names
