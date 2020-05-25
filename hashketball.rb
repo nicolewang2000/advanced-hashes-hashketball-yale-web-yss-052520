@@ -146,6 +146,7 @@ def shoe_size(name)
 end    
 
 def team_colors(name) 
+ binding.pry
  game_hash.find{|team, info| info[:team_name] == name}.value[:colors]
 end 
 
