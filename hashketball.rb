@@ -152,7 +152,7 @@ def team_colors(name)
     end 
   end
 end 
-
+game_hash.find {|team, info| info[:team_name] == name}[:colors]
 def team_names
   game_hash.collect {|team, info| info[:team_name]}
 end 
